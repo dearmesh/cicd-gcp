@@ -26,7 +26,7 @@ steps:
   - name: 'gcr.io/cloud-builders/git'
     args: ['clone', 'https://github.com/dearmesh/cicd-gcp.git']
   
-  - name: 'gcr.io/cloud-builders/apt'
+  - name: apt
     args: ['install', '-y', 'build-essential', 'libffi-dev', 'libssl-dev', 'libpq-dev', 'default-libmysqlclient-dev', 'zlib1g-dev']
 
   # Install dependencies
