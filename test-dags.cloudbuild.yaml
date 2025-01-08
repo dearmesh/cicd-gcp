@@ -25,9 +25,6 @@ steps:
   # Install dependencies
   - name: 'gcr.io/cloud-builders/git'
     args: ['clone', 'https://github.com/dearmesh/cicd-gcp.git']
-  
-  - name: apt
-    args: ['install', '-y', 'build-essential', 'libffi-dev', 'libssl-dev', 'libpq-dev', 'default-libmysqlclient-dev', 'zlib1g-dev']
 
   # Install dependencies
   - name: python:3.8
