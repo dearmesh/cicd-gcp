@@ -27,7 +27,7 @@ steps:
     args: ['clone', 'https://github.com/dearmesh/cicd-gcp.git']
 
   # Install dependencies
-  - name: bdi-onprem/pandas-gbq
+  - name: 'https://asia-southeast2-python.pkg.dev/bdi-onprem/lib-catboost'
     entrypoint: pip
     args: ["install", "-r", "requirements.txt", "-c", "constraints.txt", "--user"]
   
