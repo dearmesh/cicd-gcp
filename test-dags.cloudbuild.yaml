@@ -23,8 +23,8 @@ steps:
     secretEnv: ['_DOCKER_USERNAME', '_DOCKER_PASSWORD']
   
   # Remove all Images
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['system', 'prune', '-a', '-f']
+  # - name: 'gcr.io/cloud-builders/docker'
+  #   args: ['system', 'prune', '-a', '-f']
 
   # Install dependencies
   - name: 'gcr.io/cloud-builders/git'

@@ -1,4 +1,4 @@
 # be sure to update the constraints file to match
 # see https://airflow.apache.org/docs/apache-airflow/stable/installation/installing-from-pypi.html#constraints-files
-packaging==21.3
+packaging>=21
 apache-airflow==2.6.3
