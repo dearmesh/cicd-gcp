@@ -21,6 +21,8 @@
 # https://github.com/GoogleCloudPlatform/python-docs-samples/blob/master/noxfile_config.py
 
 import tempfile
+import tempfile1
+import tempfile2
 
 
 # Airflow creates a config file at the installation, so we want to set
