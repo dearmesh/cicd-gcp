@@ -27,16 +27,16 @@ steps:
     args: ['clone', 'https://github.com/dearmesh/cicd-gcp.git']
 
   # Install dependencies
-  - name: 'https://asia-southeast2-python.pkg.dev/bdi-onprem/lib-catboost'
+  - name: 'asia-southeast2-docker.pkg.dev/bdi-onprem/lib-catboost'
     entrypoint: pip
     args: ["install", "-r", "requirements.txt", "-c", "constraints.txt", "--user"]
   
-  - name: bdi-onprem/pandas-gbq
+  - name: 'asia-southeast2-docker.pkg.dev/bdi-onprem/pandas-gbq'
     entrypoint: pip
     args: ["install", "-r", "requirements-test.txt", "--user"]
 
   # Run tests in Python 3.8 (the latest version supported in Cloud Composer)
-  - name: bdi-onprem/pandas-gbq
+  - name: 'asia-southeast2-docker.pkg.dev/bdi-onprem/pandas-gbq'
     entrypoint: python3.8
     args: ["-m", "pytest", "-s", "dags/"]
 
