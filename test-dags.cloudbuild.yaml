@@ -13,6 +13,9 @@
 # limitations under the License.
 # [START composer_cicd_unittest_yaml]
 
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 steps:
   # install dependencies
   - name: python:3.8-slim
