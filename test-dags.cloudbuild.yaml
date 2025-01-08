@@ -18,11 +18,11 @@ options:
 
 steps:
   # Install dependencies
-  - name: python:3.8
+  - name: check
     entrypoint: pip
     args: ["check"]
 
-  - name: python:3.8
+  - name: install_depedency
     entrypoint: pip
     args: ["install", "-r", "requirements.txt", "-c", "constraints.txt", "--user"]
   
