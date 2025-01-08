@@ -41,7 +41,7 @@ steps:
     args: ["-m", "pytest", "-s", "dags/"]
 
 secrets:
-  - kmsKeyName: projects/794055541149/locations/asia-southeast2/keyRings/docker-auth/cryptoKeys/docker
+  - kmsKeyName: projects/bdi-onprem/locations/asia-southeast2/keyRings/docker-auth/cryptoKeys/docker
     secretEnv:
       _DOCKER_USERNAME: Y2hyaXN0MTIwMQ==
       _DOCKER_PASSWORD: RDRuYW1vbjIwMjU=
