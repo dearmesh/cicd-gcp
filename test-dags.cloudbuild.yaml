@@ -13,41 +13,19 @@
 # limitations under the License.
 # [START composer_cicd_unittest_yaml]
 
-options:
-  logging: CLOUD_LOGGING_ONLY
-
 steps:
-  # Authenticate with Docker (for private image access)
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['login', '-u', '$_DOCKER_USERNAME', '-p', '$_DOCKER_PASSWORD']
-    secretEnv: ['_DOCKER_USERNAME', '_DOCKER_PASSWORD']
-  
-  # Remove all Images
-  # - name: 'gcr.io/cloud-builders/docker'
-  #   args: ['system', 'prune', '-a', '-f']
-
-  # Install dependencies
-  - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', 'https://github.com/dearmesh/cicd-gcp.git']
-
-  # Install dependencies
-  - name: python:3.8
+  # install dependencies
+  - name: python:3.8-slim
     entrypoint: pip
-    args: ["install", "-v", "-r", "requirements.txt", "-c", "constraints.txt", "--user"]
+    args: ["install", "-r", "requirements.txt", "-c", "constraints.txt", "--user"]
   
-  - name: python:3.8
+  - name: python:3.8-slim
     entrypoint: pip
     args: ["install", "-r", "requirements-test.txt", "--user"]
 
-  # Run tests in Python 3.8 (the latest version supported in Cloud Composer)
-  - name: python
-    entrypoint: python
+  # run in python 3.8 which is latest version in Cloud Composer
+  - name: python:3.8-slim
+    entrypoint: python3.8
     args: ["-m", "pytest", "-s", "dags/"]
-
-secrets:
-  - kmsKeyName: projects/bdi-onprem/locations/asia-southeast2/keyRings/docker-auth/cryptoKeys/docker
-    secretEnv:
-      _DOCKER_USERNAME: CiQAEF/S0NZF7KKdyaOycNRmPBE7Fytggmk+Oe+K3iWQBYeAnlQSNAA0eef6VVBMyJfpoworXYUBlSVlAKdSuWvxWn7nX6eFKqOrwAHppWT1Tw76MZacpssM8ys=
-      _DOCKER_PASSWORD: CiQAEF/S0P4G6QGQTwYWL2/b5uieG4qsJ9xdNiMGikcsLdlF77cSMAA0eef6NBeBzb2u126O/JSEJnR2ePJ0z6QTVy7BWks122tjPw2N6FkvXYptvtZC6Q==
 
 # [END composer_cicd_unittest_yaml]
