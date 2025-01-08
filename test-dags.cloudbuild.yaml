@@ -17,6 +17,10 @@ options:
   logging: CLOUD_LOGGING_ONLY
 
 steps:
+  - name: python:3.8-slim
+    entrypoint: pip
+    args: ["install", "--upgrade", "pip"]
+    
   # install dependencies
   - name: python:3.8
     entrypoint: pip
@@ -25,10 +29,6 @@ steps:
   - name: python:3.8-slim
     entrypoint: pip
     args: ["install", "-r", "requirements.txt", "-c", "constraints.txt", "--user"]
-  
-  - name: python:3.8-slim
-    entrypoint: pip
-    args: ["install", "--upgrade", "pip"]
 
   # run in python 3.8 which is latest version in Cloud Composer
   - name: python:3.8-slim
