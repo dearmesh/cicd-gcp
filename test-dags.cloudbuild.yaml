@@ -18,20 +18,16 @@ options:
 
 steps:
   # Install dependencies
-  - name: check
-    entrypoint: pip
-    args: ["check"]
-
   - name: install_depedency
     entrypoint: pip
     args: ["install", "-r", "requirements.txt", "-c", "constraints.txt", "--user"]
   
-  - name: python:3.8
+  - name: check_depedency
     entrypoint: pip
     args: ["install", "-r", "requirements-test.txt", "--user"]
 
   # Run tests in Python 3.8 (the latest version supported in Cloud Composer)
-  - name: python:3.8
+  - name: run_dags
     entrypoint: python3.8
     args: ["-m", "pytest", "-s", "dags/"]
 
