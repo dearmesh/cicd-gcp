@@ -27,16 +27,16 @@ steps:
     args: ['clone', 'https://github.com/dearmesh/cicd-gcp.git']
 
   # Install dependencies
-  - name: gcr.io/your-project-id/install_depedency
+  - name: gcr.io/bdi-onpremid/install_depedency
     entrypoint: pip
     args: ["install", "-r", "requirements.txt", "-c", "constraints.txt", "--user"]
   
-  - name: gcr.io/your-project-id/check_depedency
+  - name: gcr.io/bdi-onprem/check_depedency
     entrypoint: pip
     args: ["install", "-r", "requirements-test.txt", "--user"]
 
   # Run tests in Python 3.8 (the latest version supported in Cloud Composer)
-  - name: gcr.io/your-project-id/run_dags
+  - name: gcr.io/bdi-onprem/run_dags
     entrypoint: python3.8
     args: ["-m", "pytest", "-s", "dags/"]
 
