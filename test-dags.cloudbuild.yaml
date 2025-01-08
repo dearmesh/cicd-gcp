@@ -21,6 +21,10 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['login', '-u', '$_DOCKER_USERNAME', '-p', '$_DOCKER_PASSWORD']
     secretEnv: ['_DOCKER_USERNAME', '_DOCKER_PASSWORD']
+  
+  # Install dependencies
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/dearmesh/cicd-gcp.git']
 
   # Install dependencies
   - name: gcr.io/your-project-id/install_depedency
