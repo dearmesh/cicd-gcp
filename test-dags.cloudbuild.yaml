@@ -17,18 +17,29 @@ options:
   logging: CLOUD_LOGGING_ONLY
 
 steps:
+  # Authenticate with Docker (for private image access)
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['login', '-u', '$_DOCKER_USERNAME', '-p', '$_DOCKER_PASSWORD']
+    secretEnv: ['_DOCKER_USERNAME', '_DOCKER_PASSWORD']
+
   # Install dependencies
-  - name: install_depedency
+  - name: gcr.io/your-project-id/install_depedency
     entrypoint: pip
     args: ["install", "-r", "requirements.txt", "-c", "constraints.txt", "--user"]
   
-  - name: check_depedency
+  - name: gcr.io/your-project-id/check_depedency
     entrypoint: pip
     args: ["install", "-r", "requirements-test.txt", "--user"]
 
   # Run tests in Python 3.8 (the latest version supported in Cloud Composer)
-  - name: run_dags
+  - name: gcr.io/your-project-id/run_dags
     entrypoint: python3.8
     args: ["-m", "pytest", "-s", "dags/"]
+
+secrets:
+  - kmsKeyName: projects/bdi-onprem/locations/asia-southeast2/keyRings/docker-auth/cryptoKeys/docker
+    secretEnv:
+      _DOCKER_USERNAME: Y2hyaXN0MTIwMQ==
+      _DOCKER_PASSWORD: RDRuYW1vbjIwMjU=
 
 # [END composer_cicd_unittest_yaml]
