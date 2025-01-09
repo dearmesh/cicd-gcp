@@ -1,5 +1,0 @@
-test
-
-berubah dehh
-
-projects/bdi-onprem/locations/asia-southeast2/keyRings/docker-auth/cryptoKeys/docker/cryptoKeyVersions/1
