@@ -1,19 +1,19 @@
 
 steps:
-⁠id: "Clone"
+- ⁠id: "Clone"
   name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: bash
   args:
     - -c
     - |
-      gcloud source repos clone cicd-sample --project=bdi-onprem
+      git clone https://github.com/dearmesh/cicd-gcp /workspace/cicd-gcp
 
-⁠id: "Upload"
+- ⁠id: "Upload"
   name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: bash
   args:
     - -c
     - |
-      gsutil -m rsync -r -d /dags gs://asia-southeast2-dev-env-4cd8345a-bucket/dags
+      gsutil -m rsync -r -d /workspace/cicd-gcp/dags gs://asia-southeast2-dev-env-4cd8345a-bucket/dags
 options:
   logging: CLOUD_LOGGING_ONLY
