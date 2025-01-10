@@ -1,6 +1,6 @@
 
 steps:
-- ⁠id: "Clone"
+- id: "Clone"
   name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: bash
   args:
@@ -8,7 +8,7 @@ steps:
     - |
       git clone https://github.com/dearmesh/cicd-gcp /workspace/cicd-gcp
 
-- ⁠id: "Upload"
+- id: "Upload"
   name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: bash
   args:
